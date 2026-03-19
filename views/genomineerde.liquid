@@ -3,27 +3,27 @@
 <section id="genomineerde-detail">
   <div class="container">
 
-    <!-- Profiel -->
     <div class="detail-header">
-      <img 
-        src="https://fdnd-agency.directus.app/assets/{{ nomination.profile_picture }}" 
-        alt="{{ nomination.title }}"
-      >
-      <div>
+      <div class="detail-info">
         <h1>{{ nomination.title }}</h1>
         <p>{{ nomination.course }}</p>
         <p>{{ nomination.institution }}</p>
       </div>
+      <img 
+        src="https://fdnd-agency.directus.app/assets/{{ nomination.profile_picture }}" 
+        alt="{{ nomination.title }}"
+      >
     </div>
 
-    <!-- Biografie -->
     {% if nomination.body %}
     <div class="detail-body">
-      {{ nomination.body }}
+      <details>
+        <summary>Lees meer over {{ nomination.title }}</summary>
+        <p>{{ nomination.body }}</p>
+      </details>
     </div>
     {% endif %}
 
-    <!-- Reacties -->
     <section id="reacties">
       <h2>Reacties</h2>
       {% if nomination.comments.size > 0 %}
@@ -40,7 +40,6 @@
       {% endif %}
     </section>
 
-    <!-- Formulier -->
     <section id="reactie-plaatsen">
       <h2>Laat een reactie achter</h2>
       <form action="/genomineerden/{{ nomination.slug }}" method="POST">
@@ -50,7 +49,7 @@
         <label for="comment">Reactie</label>
         <textarea id="comment" name="comment" rows="4" required></textarea>
 
-        <button type="submit">Verstuur reactie</button>
+        <button class="button-blue" type="submit">Verstuur reactie</button>
       </form>
     </section>
 
