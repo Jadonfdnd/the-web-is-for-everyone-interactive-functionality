@@ -1,0 +1,61 @@
+#genomineerden {
+  background: var(--merk-700);
+  padding: 3rem 1rem;
+
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 2rem;
+  }
+
+  .genomineerden-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .genomineerde-kaart {
+    a {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 220ms ease, opacity 220ms ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        
+      }
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size:1.3rem;
+      color: #fff;
+      margin-bottom: .25rem;
+    }
+
+    p {
+      font-size: 1;
+      color: rgba(255,255,255,.7);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{% render 'partials/head.liquid' %}
+
+<section id="genomineerden">
+  <div class="container">
+    <h1>Genomineerden</h1>
+    <ul class="genomineerden-grid">
+      {% for nomination in nominations %}
+      <li class="genomineerde-kaart">
+        <a href="/genomineerden/{{ nomination.slug }}">
+          <img 
+            src="https://fdnd-agency.directus.app/assets/{{ nomination.profile_picture }}" 
+            alt="{{ nomination.title }}"
+          >
+          <div class="kaart-inhoud">
+            <h2>{{ nomination.title }}</h2>
+            <p>{{ nomination.course }}</p>
+            <p>{{ nomination.institution }}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% render 'partials/foot.liquid' %}
