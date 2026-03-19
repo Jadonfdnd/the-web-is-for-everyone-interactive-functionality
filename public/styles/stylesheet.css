@@ -1,0 +1,83 @@
+:root {
+  /* PRIMARY */
+  --merk-950: hsl(213,100%, 8%);
+  --merk-800: hsl(213,100%,18%);
+  --merk-700: hsl(213,100%,28%);
+  --merk-600: hsl(213,100%,38%);
+  --merk-500: hsl(213,100%,48%);
+  --merk-300: hsl(213,100%,68%);
+  --merk-100: hsl(213,100%,88%);
+  --merk-50: #E6F1FF;
+
+  /* ACCENT */
+  --accent:     hsl(10,79%,45%);
+  --accent-mid: hsl(10,79%,55%);
+
+  /* NEUTRALS */
+  --n-300: hsl(212,18%,69%);
+  --n-50:  hsl(0,0%,98%);
+  --n-100: hsl(213,8%,84%);
+
+  /* THEMA */
+  --bg:      var(--merk-800);
+  --tekst:   var(--n-50);
+  --dim:     rgba(250,250,250,.72);
+
+  /* GLASS */
+  --surface:   rgba(0,12,40,.45);
+  --surface-2: rgba(0,12,40,.28);
+  --border:    rgba(255,255,255,.12);
+
+  /* MISC */
+  --font:     'DM Sans', system-ui, sans-serif;
+  --display:  'Syne', system-ui, sans-serif;
+  --duration: 220ms;
+  --ease:     cubic-bezier(.22,1,.36,1);
+}
+
+/* fonts */
+h1, h2, h3{
+  font-family: var(--font);
+}
+
+/* ─── BUTTONS ────── */
+/* .button-cta, .button-blue, .button-outline {
+  font-family:var(--font); font-weight:700; font-size:1rem;
+  padding:.1rem 1.25rem; border-radius: 5px; cursor:pointer;
+  transition:background 220ms var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.button-cta, .button-blue {
+  background:var(--merk-600); border:1px solid rgba(255,255,255,.22);
+  color:#fff; box-shadow:0 4px 12px rgba(0,111,245,.3); white-space:nowrap;
+}
+.button-cta:hover, .button-blue:hover {
+  background:var(--merk-500); transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(0,111,245,.4); text-decoration:none; color:#fff;
+}
+
+.button-outline { background:transparent; border:1.5px solid var(--accent); color:var(--n-50); }
+.button-outline:hover {
+  background:rgba(205,54,24,.12); border-color:var(--accent-mid);
+  transform:translateY(-1px); text-decoration:none; color:inherit;
+} */
+
+.button-outline {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  border: 1.5px solid var(--merk-700);
+  border-radius: 8px;
+  color: var(--merk-700);
+  background: transparent;
+  font-weight: 600;
+}
+
+.button-blue {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  background: var(--merk-700);
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}

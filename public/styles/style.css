@@ -1,0 +1,326 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.hero-section {
+  background: var(--merk-50);
+  padding: 3rem 1rem;
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+
+    @media (min-width: 750px) {
+      flex-direction: row;
+    }
+  }
+
+  .hero-text {
+    flex: 1;
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--merk-800);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 40ch;
+      margin-bottom: 1.5rem;
+      color: var(--merk-800);
+    }
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    align-items: flex-start;
+  }
+
+  .hero-image {
+    flex: 1.2;
+
+    img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+}
+
+#nieuws {
+  padding: 3rem 1rem;
+
+  h2 {
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &::before, &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #ddd;
+    }
+  }
+
+  .nieuws-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: 750px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .nieuws-article {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 220ms ease, border-color 220ms ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--merk-500);
+    }
+
+    img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+  }
+
+  .nieuws-article-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: .75rem;
+
+    p { flex-grow: 1; }
+  }
+}
+
+img{
+    object-fit: contain;
+}
+.nieuws-article{
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        border: 1px solid black;
+        border-radius: 8px;
+        margin: 1rem;
+
+        img{
+            border-radius: 8px;
+            margin: 1rem;
+            height: 275px;
+            width: 400px;
+            
+        }
+        
+    }
+
+#wat-zijn-ads {
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    max-width: 30ch;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    max-width: 65ch;
+    margin-bottom: 1.5rem;
+  }
+
+  img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-top: 2rem;
+  }
+}
+
+/* -----ontdek ad onderwijs------- */
+#ontdek-ad-onderwijs {
+  background: var(--merk-700);
+  padding: 3rem 1rem;
+  text-align: center;
+
+  h2 {
+    color: #fff;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 1rem;
+  }
+
+  & > .container > p {
+    color: rgba(255,255,255,.75);
+    max-width: 60ch;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: left;
+
+    @media (min-width: 750px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .info-article {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    transition: transform 220ms ease;
+
+    &:hover { transform: translateY(-3px); }
+
+    h3 {
+      color: var(--merk-800);
+
+
+    }
+
+    p {
+      color: var(--merk-700);
+      flex-grow: 1;
+    }
+  }
+}
+
+/* ----waarom ad kiezen------- */
+#waarom-kiezen {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1rem;
+  justify-self: center;
+
+  h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    max-width: 30ch;
+    color: var(--merk-800);
+  }
+
+  p {
+    max-width: 55ch;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    margin-bottom: 1.5rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+
+      &::before {
+        content: '';
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 13px no-repeat;
+      }
+    }
+  }
+}
+
+
+/* ------faq------ */
+
+#veelgestelde-vragen {
+  padding: 3rem 1rem;
+
+  h2 {
+    text-align: center;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 2rem;
+  }
+
+  .faq-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    max-width: 780px;
+    margin-inline: auto;
+  }
+
+  details {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 220ms ease, box-shadow 220ms ease;
+
+    &[open] {
+      border-color: #aaa;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      gap: 1rem;
+
+      &::-webkit-details-marker { display: none; }
+
+      &::after {
+        content: '▼';
+        font-size: .75rem;
+        background: var(--accent);
+        color: #fff;
+        padding: .4rem .5rem;
+        border-radius: 6px;
+        transition: transform 220ms ease;
+        flex-shrink: 0;
+      }
+    }
+
+    &[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    p {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid #eee;
+    }
+  }
+}

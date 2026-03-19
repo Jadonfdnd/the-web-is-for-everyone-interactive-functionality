@@ -1,0 +1,60 @@
+{% render 'partials/head.liquid' %}
+
+<section id="genomineerde-detail">
+  <div class="container">
+
+    <!-- Profiel -->
+    <div class="detail-header">
+      <img 
+        src="https://fdnd-agency.directus.app/assets/{{ nomination.profile_picture }}" 
+        alt="{{ nomination.title }}"
+      >
+      <div>
+        <h1>{{ nomination.title }}</h1>
+        <p>{{ nomination.course }}</p>
+        <p>{{ nomination.institution }}</p>
+      </div>
+    </div>
+
+    <!-- Biografie -->
+    {% if nomination.body %}
+    <div class="detail-body">
+      {{ nomination.body }}
+    </div>
+    {% endif %}
+
+    <!-- Reacties -->
+    <section id="reacties">
+      <h2>Reacties</h2>
+      {% if nomination.comments.size > 0 %}
+        <ul class="reacties-lijst">
+          {% for comment in nomination.comments %}
+          <li class="reactie">
+            <strong>{{ comment.name }}</strong>
+            <p>{{ comment.comment }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Nog geen reacties. Wees de eerste!</p>
+      {% endif %}
+    </section>
+
+    <!-- Formulier -->
+    <section id="reactie-plaatsen">
+      <h2>Laat een reactie achter</h2>
+      <form action="/genomineerden/{{ nomination.slug }}" method="POST">
+        <label for="name">Naam</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="comment">Reactie</label>
+        <textarea id="comment" name="comment" rows="4" required></textarea>
+
+        <button type="submit">Verstuur reactie</button>
+      </form>
+    </section>
+
+  </div>
+</section>
+
+{% render 'partials/foot.liquid' %}
