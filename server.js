@@ -51,16 +51,22 @@ app.get('/genomineerden', async function (req, res) {
   res.render('genomineerden.liquid', { nominations: nominationsData.data })
 })
 
-// ─── GENOMINEERDE DETAIL ──────────────────────────
+// ─── GENOMINEERDE DETAIL ───────────────────────
 // Maak een GET route voor de detailpagina van een genomineerde
-// :slug is een parameter die de slug van de genomineerde bevat
+
 app.get('/genomineerden/:slug', async function (req, res) {
   const slug = req.params.slug
   // Fetch de nominatie op basis van de slug, inclusief de comments
   const nominationRes = await fetch(`https://fdnd-agency.directus.app/items/adconnect_nominations?filter[slug][_eq]=${slug}&fields=*,comments.*`)
   const nominationData = await nominationRes.json()
   // Render genomineerde.liquid en geef de nominatie mee
-  res.render('genomineerde.liquid', { nomination: nominationData.data[0] })
+  //redirect na succes rate
+  res.render('genomineerde.liquid', {
+    nomination: nominationData.data[0],
+    success: req.query.succes === 'true',
+    error: req.query.error === 'true'
+  })
+  
 })
 
 // ─── POST COMMENT ─────────────────────────────────
@@ -68,24 +74,31 @@ app.get('/genomineerden/:slug', async function (req, res) {
 app.post('/genomineerden/:slug', async function (req, res) {
   const slug = req.params.slug
 
-  // Haal eerst de nominatie op om het id te krijgen
-  const nominationRes = await fetch(`https://fdnd-agency.directus.app/items/adconnect_nominations?filter[slug][_eq]=${slug}`)
-  const nominationData = await nominationRes.json()
-  const nominationId = nominationData.data[0].id
+  //try voor error handling
+  try {
+    // Haal eerst de nominatie op om het id te krijgen
+    const nominationRes = await fetch(`https://fdnd-agency.directus.app/items/adconnect_nominations?filter[slug][_eq]=${slug}`)
+    const nominationData = await nominationRes.json()
+    const nominationId = nominationData.data[0].id
 
-  // Sla de reactie op in Directus
-  await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations_comments', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: req.body.name,
-      comment: req.body.comment,
-      nomination: nominationId
+    // Sla de reactie op in Directus
+    await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations_comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: req.body.name,
+        comment: req.body.comment,
+        nomination: nominationId
+      })
     })
-  })
 
-  // Stuur de bezoeker terug naar de detailpagina na het plaatsen van een reactie
-  res.redirect(303, `/genomineerden/${slug}`)
+    // Stuur de bezoeker terug naar de detailpagina na het plaatsen van een reactie
+    res.redirect(303, `/genomineerden/${slug}?succes=true`)
+//catch bij errors (try catch)
+  } catch (error) {
+    // Als er iets fout gaat stuur de bezoeker terug met een foutmelding
+    res.redirect(303, `/genomineerden/${slug}?error=true`)
+  }
 })
 
 // ─── 404 ──────────────────────────────────────────
