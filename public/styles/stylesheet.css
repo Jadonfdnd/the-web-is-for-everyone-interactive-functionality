@@ -36,32 +36,11 @@
 }
 
 /* fonts */
-h1, h2, h3{
+h1, h2, h3 {
   font-family: var(--font);
 }
 
 /* ─── BUTTONS ────── */
-/* .button-cta, .button-blue, .button-outline {
-  font-family:var(--font); font-weight:700; font-size:1rem;
-  padding:.1rem 1.25rem; border-radius: 5px; cursor:pointer;
-  transition:background 220ms var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-}
-
-.button-cta, .button-blue {
-  background:var(--merk-600); border:1px solid rgba(255,255,255,.22);
-  color:#fff; box-shadow:0 4px 12px rgba(0,111,245,.3); white-space:nowrap;
-}
-.button-cta:hover, .button-blue:hover {
-  background:var(--merk-500); transform:translateY(-1px);
-  box-shadow:0 6px 20px rgba(0,111,245,.4); text-decoration:none; color:#fff;
-}
-
-.button-outline { background:transparent; border:1.5px solid var(--accent); color:var(--n-50); }
-.button-outline:hover {
-  background:rgba(205,54,24,.12); border-color:var(--accent-mid);
-  transform:translateY(-1px); text-decoration:none; color:inherit;
-} */
-
 .button-outline {
   display: inline-block;
   padding: .75rem 1.5rem;
@@ -80,4 +59,70 @@ h1, h2, h3{
   color: #fff;
   font-weight: 600;
   border: none;
+}
+
+/*USER PREFERENCE: prefers-reduced-motion*/
+
+@media (prefers-reduced-motion: reduce) {
+  .nieuws-article,
+  .info-article,
+  .genomineerde-kaart a,
+  .info-block .container,
+  details,
+  details summary::after,
+  details summary,
+  .button-blue,
+  .button-outline {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* -----USER PREFERENCE: prefers-color-scheme darkmode -------*/
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --merk-50: #0d1f3c;
+    --n-50: #f5f5f5;
+  }
+
+  body {
+    background: #111;
+    color: #f5f5f5;
+  }
+
+  .nieuws-article {
+    border-color: #333;
+    background: #1a1a1a;
+  }
+
+  .reactie {
+    border-color: #333;
+    background: #1a1a1a;
+  }
+
+  #reactie-plaatsen form {
+    border-color: #333;
+    background: #1a1a1a;
+  }
+
+  #reactie-plaatsen input,
+  #reactie-plaatsen textarea {
+    background: #222;
+    color: #f5f5f5;
+    border-color: #444;
+  }
+
+  .detail-body {
+    border-color: #444;
+  }
+
+  .button-outline {
+    border-color: var(--merk-300);
+    color: var(--merk-300);
+  }
+
+  .button-blue {
+    background: var(--merk-600);
+  }
 }
